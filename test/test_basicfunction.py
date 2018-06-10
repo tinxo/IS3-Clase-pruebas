@@ -1,7 +1,7 @@
 # Archivo con los tests unitarios
 
 import unittest
-from basicfunction import BasicFunction
+from test_clase.basicfunction import BasicFunction
 
 class TestBasicFunction(unittest.TestCase):
     def setUp(self):
