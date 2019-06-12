@@ -1,8 +1,8 @@
 from liquidacion import Liquidacion
 
 print("Liquidacion de sueldos de prueba")
-horas = input("Ingrese cantidad de horas trabajadas: ")
-antiguedad = input("Ingrese la antiguedad del empleado: ")
+horas = int(input("Ingrese cantidad de horas trabajadas: "))
+antiguedad = int(input("Ingrese la antiguedad del empleado: "))
 liq = Liquidacion()
 print("Se procede con la liquidacion: ")
 basico = liq.calcularSueldoBasico(horas)

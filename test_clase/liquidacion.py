@@ -9,11 +9,12 @@ class Liquidacion(object):
 
     def calcularSueldoBasico(self, hsTrabajadas):
         # Basico = horas trabajadas * valor hora
-        basico = hsTrabajadas * self.valorHora
+        basico = int(hsTrabajadas) * self.valorHora
         return basico
 
     def calcularSueldoBruto(self, basico, antiguedad):
         # Bruto = basico + bonificaciones + antiguedad
+        basico = float(basico)
         bruto = basico + (basico * (self.pctBonificacion * 0.01))
         if (antiguedad < 5):
             bruto = bruto + (basico * 0.1) # 10%
