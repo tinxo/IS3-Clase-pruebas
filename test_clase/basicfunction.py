@@ -8,4 +8,4 @@ class BasicFunction(object):
         self.state += 1
 
     def clearState(self):
-        self.state = 50
+        self.state = 0
