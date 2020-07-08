@@ -5,7 +5,7 @@ class BasicFunction(object):
         self.state = 0
     
     def incrementState(self):
-        self.state += 1
+        self.state += 2
 
     def clearState(self):
         self.state = 0
