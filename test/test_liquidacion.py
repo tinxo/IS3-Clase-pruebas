@@ -1,35 +1,38 @@
 # Archivo con los tests unitarios
 
-import unittest
-from test_clase.liquidacion import Liquidacion
+import pytest
+from app.liquidacion import Liquidacion
 
-class TestLiquidacion(unittest.TestCase):
-    def setUp(self):
-        # Se define en esta clase una instancia de la clase a testear
-        self.liq = Liquidacion()
+def setup():
+    # Se define en esta clase una instancia de la clase a testear
+    instancia = Liquidacion()
+    return instancia
 
-    def test1(self):
-        # Para probar si la inicializacion de valores funciona
-        self.assertEqual(self.liq.valorHora, 250)
-        self.assertEqual(self.liq.pctBonificacion, 8)
-        self.assertEqual(self.liq.pctRetenciones, 11)
-        self.assertEqual(self.liq.pctObraSocial, 3)
-    
-    def test2(self):
-        # Para probar si el calculo del basico funciona
-        self.assertEqual(self.liq.calcularSueldoBasico(10), 2500)
+def test_instancia_basica():
+    un_empleado = setup()
+    assert un_empleado.valor_hora == 550
+    assert un_empleado.pct_bonificacion == 8
+    assert un_empleado.pct_retenciones == 11
+    assert un_empleado.pct_obraSocial == 3
 
-    def test3(self):
-        # Para probar si el calculo del bruto funciona
-        self.assertEqual(self.liq.calcularSueldoBruto(2500,3),2950)
+def test_calcular_sueldo_basico():
+    un_empleado = setup()
+    hs_trabajadas = 40
+    assert un_empleado.calcular_sueldo_basico(hs_trabajadas) == 22000.00
 
-    def test4(self):
-        # Para probar si el calculo del neto funciona
-        self.assertEqual(self.liq.calcularSueldoNeto(2950),2537)
+def test_calcular_sueldo_bruto():
+    un_empleado = setup()
+    basico = 22000
+    antiguedad = 3
+    assert un_empleado.calcular_sueldo_bruto(basico, antiguedad) == 25960.00
 
-    def testIntegracion1(self):
-        # Para probar toda la clase completa ~test de integracion
-        self.assertEqual(self.liq.calcularSueldoEmpleado(20,5),5504)
-                    
-if __name__ == '__main__':
-    unittest.main()
+def test_calcular_sueldo_neto():
+    un_empleado = setup()
+    bruto = 25960
+    assert un_empleado.calcular_sueldo_neto(bruto) ==  22325.60
+
+def test_calcular_sueldo_empleado():
+    un_empleado = setup()
+    hs_trabajadas = 40
+    antiguedad = 3
+    assert un_empleado.calcular_sueldo_empleado(hs_trabajadas, antiguedad) == 22325.60
