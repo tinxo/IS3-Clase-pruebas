@@ -45,3 +45,23 @@ class Liquidacion():
         sueldo_bruto = self.calcular_sueldo_bruto(sueldo_basico, antiguedad_empleado)
         sueldo_neto = self.calcular_sueldo_neto(sueldo_bruto)
         return round(sueldo_neto,2)
+
+# print("Liquidacion de sueldos de prueba")
+# horas = int(input("Ingrese cantidad de horas trabajadas: "))
+# antiguedad = int(input("Ingrese la antiguedad del empleado: "))
+
+# # Se genera la instancia
+# liq = Liquidacion()
+
+# print("Se procede con la liquidacion: ")
+# res = liq.calcular_sueldo_basico(horas)
+# print(f'Sueldo básico: ${res}')
+
+# res = liq.calcular_sueldo_bruto(res, antiguedad)
+# print(f'Sueldo bruto: ${res}')
+
+# res = liq.calcular_sueldo_neto(res)
+# print(f'Sueldo neto: ${res}')
+
+# total = liq.calcular_sueldo_empleado(horas, antiguedad)
+# print(f'Sueldo neto a pagar: ${total}')
