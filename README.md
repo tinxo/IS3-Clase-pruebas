@@ -9,7 +9,10 @@ Distribución de archivos:
 
 Descripción de los archivos:
 
-* __basicfunction.py__ es una clase muy básica con funcionalidad limitada (iniciar valor, sumar uno, reiniciar)
 * __liquidacion.py__ es una clase básica para liquidación de sueldos, tomando un valor de cantidad de horas trabajadas y antigüedad de un empleado, se calcula su remuneración. Se utiliza desde el archivo **uso.py**.
 
 Para ambos archivos se encuentran definidos tests unitarios para sus métodos, y en el caso de la liquidación de sueldos un test de integración para verificar que todos los métodos funcionen correctamente en conjunto.
+
+Material extra:
+
++ [Tutorial]:(https://realpython.com/pytest-python-testing/)
