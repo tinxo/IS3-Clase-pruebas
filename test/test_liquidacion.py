@@ -1,11 +1,14 @@
 # Archivo con los tests unitarios
 
+# python -m pip install pytest
+# conda install pytest
+
 import pytest
-from app.liquidacion import Liquidacion
+import app.liquidacion as lq
 
 def setup():
     # Se define en esta clase una instancia de la clase a testear
-    instancia = Liquidacion()
+    instancia = lq.Liquidacion()
     return instancia
 
 def test_instancia_basica():
@@ -36,3 +39,16 @@ def test_calcular_sueldo_empleado():
     hs_trabajadas = 40
     antiguedad = 3
     assert un_empleado.calcular_sueldo_empleado(hs_trabajadas, antiguedad) == 22325.60
+
+def test_integrado():
+    un_empleado = setup()
+    hs_trabajadas = 400
+    hs_trabajadas2 = 40
+    antiguedad = 3
+    total_fc = un_empleado.calcular_sueldo_empleado(hs_trabajadas, antiguedad)
+    
+    basico = un_empleado.calcular_sueldo_basico(hs_trabajadas2)    
+    bruto = un_empleado.calcular_sueldo_bruto(basico, antiguedad)
+    total_fs = un_empleado.calcular_sueldo_neto(bruto)
+
+    assert total_fc == total_fs
