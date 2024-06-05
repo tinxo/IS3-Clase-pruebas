@@ -8,8 +8,11 @@ def test_suma():
     "valor_a, valor_b, resultado",
     [
         (2, 3, 5),           
+        (2, -3, -1), # suma de un entero negativo           
         (0, 5, 5),
         (None, 5, None),     
+        (None, None, None), # para llegar al 100% de coverage     
+        (2, None, None), # para llegar al 100% de coverage     
         ('2', 5, 7),
         (2, suma(2, 2), 6),
     ]

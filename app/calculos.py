@@ -13,11 +13,6 @@ def suma(a, b):
     try:
         num_a = int(a)
         num_b = int(b)
-    except TypeError:
-        return None
-    except ValueError:
-        return None
-    if num_a == None or num_b == None:
-        return None
-    else:
         return num_a + num_b
+    except (TypeError, ValueError):
+        return None

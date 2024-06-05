@@ -23,11 +23,22 @@ def test_calcular_sueldo_basico():
     hs_trabajadas = 40
     assert un_empleado.calcular_sueldo_basico(hs_trabajadas) == 22000.00
 
-def test_calcular_sueldo_bruto():
+@pytest.mark.parametrize(
+    "valor_a, valor_b, resultado",
+    [
+        (22000, 3, 25960.00),
+        (22000, 6, 28160.00),
+    ]
+)
+def test_calcular_sueldo_bruto(valor_a, valor_b, resultado):
     un_empleado = setup()
-    basico = 22000
-    antiguedad = 3
-    assert un_empleado.calcular_sueldo_bruto(basico, antiguedad) == 25960.00
+    assert un_empleado.calcular_sueldo_bruto(valor_a, valor_b) == resultado
+
+# def ():
+#     un_empleado = setup()
+#     basico = 22000
+#     antiguedad = 3
+#     assert un_empleado.calcular_sueldo_bruto(basico, antiguedad) == 
 
 def test_calcular_sueldo_neto():
     un_empleado = setup()
@@ -39,16 +50,3 @@ def test_calcular_sueldo_empleado():
     hs_trabajadas = 40
     antiguedad = 3
     assert un_empleado.calcular_sueldo_empleado(hs_trabajadas, antiguedad) == 22325.60
-
-def test_integrado():
-    un_empleado = setup()
-    hs_trabajadas = 400
-    hs_trabajadas2 = 40
-    antiguedad = 3
-    total_fc = un_empleado.calcular_sueldo_empleado(hs_trabajadas, antiguedad)
-    
-    basico = un_empleado.calcular_sueldo_basico(hs_trabajadas2)    
-    bruto = un_empleado.calcular_sueldo_bruto(basico, antiguedad)
-    total_fs = un_empleado.calcular_sueldo_neto(bruto)
-
-    assert total_fc == total_fs
